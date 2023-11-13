@@ -67,10 +67,22 @@ export default function Callback() {
   }, [userURI]);
 
   return (
-    <>
-      <h1 className="text-2xl font-bold text-center my-8">
-        Liked Songs Not Added to a Playlist
-      </h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold text-indigo-700 my-8">
+          Liked Songs Not Added to a Playlist
+        </h1>
+        <Suspense fallback={<p>Loading...</p>}>
+          {savedTracksData && savedTracksData.length > 0 ? (
+            <UnaddedSongsDisplay
+              likedSongsData={savedTracksData}
+              playlistTracksData={userPlaylistData!}
+            />
+          ) : (
+            <p>Loading...</p>
+          )}
+        </Suspense>
+      </div>
       {/* <h1 className="text-3xl font-bold underline">Hello</h1>
       <p>hello</p>
       <p>Refresh Token: {refreshToken}</p>
@@ -87,12 +99,8 @@ export default function Callback() {
           userURI={userURI!}
         />
       </Suspense> */}
-      <Suspense fallback={<p>Loading...</p>}>
-        <UnaddedSongsDisplay
-          likedSongsData={savedTracksData!}
-          playlistTracksData={userPlaylistData!}
-        />
-      </Suspense>
-    </>
+    </div>
+    
   );
+
 }

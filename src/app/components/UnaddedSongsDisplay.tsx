@@ -51,39 +51,39 @@ export default function UnaddedSongsDisplay({
   }
 
   return (
-    <div className="px-4 py-6">
+    <div className="bg-gray-100 min-h-screen p-6">
       <div className="flex justify-end mb-4 items-end flex-col">
         <button
           onClick={toggleSort}
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md text-sm font-semibold mb-2"
+          className="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-md text-sm font-semibold mb-2"
         >
           {`Sort by ${
             sortTypes[(sortTypes.indexOf(sortType) + 1) % sortTypes.length]
           }`}
         </button>
-        <div className="text-gray-500 text-sm">
+        <div className="text-gray-600 text-sm">
           Currently Sorted By: {sortType}
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {likedSongsData.map((likedSong) =>
           !playlistTracksIDs.includes(likedSong.track.id) &&
-          !likedSong.track.explicit ? ( //EXPLICIT SONGS ARE NOT DISPLAYED
+          !likedSong.track.explicit ? ( // FILTERS EXPLICIT SONGS
             <div
               key={likedSong.track.id}
-              className="bg-gray-100 text-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg flex flex-col justify-between overflow-hidden"
+              className="bg-white text-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
             >
               <div className="flex flex-col justify-between h-full">
                 <div>
-                  <h2 className="text-2xl font-bold mb-2 line-clamp-2">
+                  <h2 className="text-lg font-semibold mb-2 line-clamp-2">
                     {likedSong.track.name}
                   </h2>
                   <p className="text-gray-600 text-sm mb-1 line-clamp-1">
-                    <span className="font-bold">Artist(s):</span>{" "}
+                    <span className="font-semibold">Artist(s):</span>{" "}
                     {likedSong.track.artists.map(({ name }) => name).join(", ")}
                   </p>
                   <p className="text-gray-600 text-sm line-clamp-1">
-                    <span className="font-bold">Album:</span>{" "}
+                    <span className="font-semibold">Album:</span>{" "}
                     {likedSong.track.album.name}
                   </p>
                 </div>
