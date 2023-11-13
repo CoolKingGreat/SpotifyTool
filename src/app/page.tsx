@@ -20,9 +20,8 @@ export function getSpotifyAuth() {
 export default function Home() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello</h1>
-      <p>hello</p>
-      <Link href={(getSpotifyAuth())}>This is a link to an external website</Link>
+      <h1 className="text-3xl font-bold underline">Spotify Song Organizer Tool</h1>
+      <Link href={(getSpotifyAuth())}>Please Log Into Spotify To Begin Data Retrieval</Link>
     </>
   )
 }
